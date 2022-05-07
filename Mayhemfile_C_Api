@@ -1,0 +1,6 @@
+project: lol-html
+target: c-api
+duration: 90
+
+cmds:
+    - cmd: /fuzz_c_api

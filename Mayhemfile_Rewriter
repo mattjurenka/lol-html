@@ -1,0 +1,6 @@
+project: lol-html
+target: fuzz-rewriter
+duration: 90
+
+cmds:
+    - cmd: /fuzz_rewriter
