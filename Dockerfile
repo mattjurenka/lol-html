@@ -19,6 +19,5 @@ RUN cargo fuzz build --release fuzz_c_api
 #copy over fuzz targets and c api
 FROM --platform=linux/amd64 rustlang/rust:nightly
 
-COPY --from=builder /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_c_api /
-COPY --from=builder /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz_rewriter /
+COPY --from=builder /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz* /
 COPY --from=builder /lol-html/c-api/target/debug/deps/liblolhtml.so /lib/
