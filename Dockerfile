@@ -20,4 +20,5 @@ WORKDIR /lol-html/fuzz/
 RUN ~/.cargo/bin/cargo fuzz build --release fuzz_c_api
 
 COPY /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz* /
-COPY /lol-html/c-api/target/debug/deps/liblolhtml.so /lib/
+COPY /lol-html/c-api/target/debug/deps/liblolhtml.s* /lib/
+
