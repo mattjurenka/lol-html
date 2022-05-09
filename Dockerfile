@@ -1,5 +1,5 @@
 # Build Stage
-FROM --platform=linux/amd64 ubuntu:20.04 as builder
+FROM --platform=linux/amd64 ubuntu:22.04 as builder
 
 ENV DEBIAN_FRONTEND=noninteractive
 ## Install build dependencies.
@@ -19,6 +19,5 @@ RUN ~/.cargo/bin/cargo build --jobs 8
 WORKDIR /lol-html/fuzz/
 RUN ~/.cargo/bin/cargo fuzz build --release fuzz_c_api
 
-COPY /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz* /
-COPY /lol-html/c-api/target/debug/deps/liblolhtml.s* /lib/
-
+RUN cp /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz* /
+RUN cp /lol-html/c-api/target/debug/deps/liblolhtml.s* /lib/
