@@ -17,7 +17,9 @@ WORKDIR /lol-html/c-api/
 RUN ~/.cargo/bin/cargo build --jobs 8
 
 WORKDIR /lol-html/fuzz/
-RUN ~/.cargo/bin/cargo fuzz build --release fuzz_c_api
+RUN ~/.cargo/bin/cargo fuzz build
 
-RUN cp /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz* /
-RUN cp /lol-html/c-api/target/debug/deps/liblolhtml.s* /lib/
+FROM --platform=linux/amd64 ubuntu:22.04
+
+COPY --from=builder /lol-html/fuzz/target/x86_64-unknown-linux-gnu/release/fuzz* /
+COPY --from=builder /lol-html/c-api/target/debug/deps/liblolhtml.s* /lib/
