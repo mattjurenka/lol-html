@@ -3,4 +3,4 @@ target: fuzz-rewriter
 duration: 90
 
 cmds:
-    - cmd: /fuzz_rewriter
+    - cmd: cd /lol-html/fuzz && ~/.cargo/bin/cargo fuzz fuzz_rewriter
